@@ -133,11 +133,11 @@ Durante el desarrollo de este laboratorio, me encontré con los siguientes desaf
 
 Para completar esta tarea, se consultaron los siguientes recursos:
 
-1.  [Laravel](https://laravel.com)
-2.  [[php](https://www.php.net)
-3.  [Composer](https://getcomposer.org)
-4. [apache](https://httpd.apache.org)
-5. [mysql](https://www.mysql.com)
+1.  **Documentación Oficial de Laravel:** [https://laravel.com](https://laravel.com)
+2.  **Documentación Oficial de PHP:** [https://www.php.net](https://www.php.net)
+3.  **Gestor de Dependencias Composer:** [https://getcomposer.org](https://getcomposer.org)
+4.  **Servidor Web Apache:** [https://httpd.apache.org](https://httpd.apache.org)
+5.  **Base de Datos MySQL:** [https://www.mysql.com](https://www.mysql.com)
 
 ---
 
