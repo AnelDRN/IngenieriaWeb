@@ -104,7 +104,7 @@ El proyecto sigue la estructura **Modelo-Vista-Controlador**:
 
 A continuación, se presenta una captura de pantalla del formulario de inicio de sesión funcionando correctamente en el navegador:
 
-_**[AQUÍ INSERTA TU CAPTURA DE PANTALLA]**_
+[LoginLaravel-Capturas](https://imgur.com/a/0Y8X2oD)
 
 ---
 
