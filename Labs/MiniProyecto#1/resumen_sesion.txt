@@ -1,0 +1,36 @@
+### 1. Objetivo del Proyecto
+
+*   Acordamos desarrollar un mini-proyecto en PHP basado en la gúía que proporcionaste, enfocado en resolver 10 problemas de algoritmia y siguiendo las especificaciones del documento.
+
+### 2. Estructura del Proyecto
+
+*   Diseñamos y creamos una estructura de carpetas organizada para el proyecto en la ruta `D:\Personal\Proyectos\Didacticos\IngenieriaWeb\IngenieriaWeb\Labs\MiniProyecto#1\MiniProyectoPHP`.
+*   La estructura implementada fue:
+    ```
+    MiniProyectoPHP/
+    ├── public/         # Carpeta pública, accesible desde el navegador
+    │   ├── index.php   # Controlador principal que gestiona las páginas
+    │   └── assets/     # Carpeta para CSS y JS
+    ├── src/            # Lógica principal de PHP
+    │   ├── problems/   # Archivos para cada uno de los 10 problemas
+    │   └── utils/      # Clases de utilidad (ej. Utilities.php)
+    └── views/          # Plantillas y vistas HTML
+        ├── templates/  # Partes reutilizables (header.php, footer.php)
+        └── home.php    # Vista del menú principal
+    ```
+*   Creamos los archivos iniciales, incluyendo la configuración de **Bootstrap 5** a través de CDN en los archivos `header.php` y `footer.php`.
+
+### 3. Puesta en Marcha del Servidor
+
+*   Para visualizar el proyecto, decidimos usar el servidor web incorporado de PHP en lugar de instalar XAMPP/WAMP.
+*   Tras un problema inicial con la variable de entorno PATH, me proporcionaste el comando para ejecutarlo manualmente.
+*   **Comando de ejecución:** Desde la carpeta `public`, se ejecuta `"C:\Program Files\php8.4\php.exe" -S localhost:8000`.
+*   **Acceso:** La aplicación es visible en `http://localhost:8000`.
+
+### 4. Primer Cambio Realizado
+
+*   Modificamos el archivo `views/templates/footer.php` para cumplir con el requisito de mostrar la fecha de ejecución del día, cambiando el código a: `<p>Fecha: <?php echo date('d/m/Y'); ?></p>`.
+
+### 5. Siguientes Pasos (Para la próxima sesión)
+
+*   Nuestro plan es comenzar el desarrollo del **Problema #1: Calculadora de Estadísticas**.
