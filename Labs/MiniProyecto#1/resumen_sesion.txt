@@ -33,4 +33,4 @@
 
 ### 5. Siguientes Pasos (Para la próxima sesión)
 
-*   Nuestro plan es comenzar el desarrollo del **Problema #1: Calculadora de Estadísticas**.
+*   
