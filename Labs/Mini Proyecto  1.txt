@@ -1,0 +1,410 @@
+UNIVERSIDAD TECNOLÓGICA
+FACULTAD DE INGENIERÍA EN SISTEMAS COMPUTACIONALES
+CAMPUS VICTOR LEVIS SASSO
+INGENIERÍA WEB
+Guía de Laboratorio – Mini Proyecto #2
+de Sentencias de Control y Clases
+INSTRUCTOR: Ing. Irina Fong
+Fecha de Entrega:
+
+Grupo:
+
+Fecha Límite de entrega: [SOLO EN ESTE PERÍODO]
+Del 22 al 03 de septiembre de 2025.
+Nota de Charla
+Estudiante #1
+
+Estudiante #2
+
+Nota de Investigación y Código Fuente
+
+Estudiante #1
+
+Estudiante #2
+
+A.
+
+Título de la experiencia
+
+“Resolviendo problemas con estructuras de decisión y repetición en PHP”
+B.
+
+Tema
+
+Sentencias de control (if, case), operadores ternarios y estructuras repetitivas
+(while, for, foreach), arreglos, funciones y clases.
+C.
+
+Objetivo
+
+Objetivo General
+Construir aplicaciones web aplicando técnicas, metodologías y herramientas de
+diseño y desarrollo que permita la optimización, facilidad de mantenimiento,
+cumpliendo los criterios de usabilidad y accesibilidad.
+Elaborado por: Ing. Irina Fong
+Página 1 de
+13
+
+Objetivos Específicos:
+Aplicar estructuras de control condicional y repetitiva, funciones matemáticas,
+funciones de validación, clases con métodos estáticos, para resolver problemas
+algorítmicos, utilizando buenas prácticas de programación como las
+recomendaciones de PSR-1.
+
+Elaborado por: Ing. Irina Fong
+13
+
+Página 2 de
+
+D.
+
+Metodología
+
+En Grupo de dos estudiantes resolverán una serie de problemas que requieren el
+uso de estructuras como if, case, while, for, foreach, swtich, arreglos, funciones y
+clases. Cada problema deberá resolverse mediante el lenguaje de programación
+PHP. Se evaluará no solo la lógica del algoritmo, sino también su claridad, estilo y
+nomenclatura utilizada (camelCase para nombres de métodos/procedimientos,
+camelCase para variables).
+(PSR-1: Basic Coding Standard (Status: Accepted)
+Este estándar comprende como debería ser la codificación de los elementos
+necesarios para asegurar la interoperabilidad de código compartido. Es decir,
+indican normas de codificación básica a muy bajo nivel.
+1. clases (StudlyCaps) o métodos (camelCase).
+Ejemplo:
+class UsuarioInvalidoException {}
+class GestorDeSesiones {}
+2. Métodos [Deben declararse en camelCase]
+public function imprimirError() {}
+public function obtenerDatosUsuario() {}
+3. Constantes
+const VERSION_APP = '1.0.0';
+const MAX_INTENTOS = 5
+4. Funciones y variables (Aunque PSR-1 no obliga, por
+convención se recomienda )
+$notaFinal = 85;
+$listaEstudiantes = [];
+
+Elaborado por: Ing. Irina Fong
+13
+
+Página 3 de
+
+Entregables (Comprimido ZIP,RAR en Moodle)
+
+Informe o Memoria
+del Trabajo
+
+Enlace del repositorio.
+Ubicar Taller_
+SiglasdelosIntegrantes.
+
+Power Point u otro
+formato de
+presentación.
+
+1. Informe o memoria del trabajo: PDF
+El informe escrito debe detallar lo siguiente:
+o
+
+Portada
+
+o
+
+Índice
+
+o
+
+Introducción
+
+o
+
+Metodología
+
+o
+
+Definición de Funciones Matemáticas, Cadenas y de Validación de
+Datos.
+
+o
+
+Lecciones aprendidas o dificultades enfrentadas.
+
+o
+
+Captura de pantalla de la ejecución de cada programa.
+
+o
+
+Debe incluir números de páginas.
+
+2. Código Fuente en PHP.
+Facilitar el enlace del repositorio o subir la carpeta en Moodle comprimida.
+Documentar el repositorio. Ubicar en el Repositorio tecnologías utilizadas. Fecha
+de Realización, Estudiantes que pertenecen al grupo, correo, curso, y que digan
+que pertenecen a la Universidad Tecnológica de Panamá. Ubicar una Introducción,
+además si utilizaron POO, algún método estático, documentar algunas funciones
+matemáticas sqr, ect. Además funciones para validación y sanitización.
+3. Presentación PowerPoint u otro formato de presentación.
+•
+
+Una presentación con un mínimo de:
+
+Elaborado por: Ing. Irina Fong
+13
+
+Página 4 de
+
+o
+
+Portada con datos de ambos estudiantes.
+
+o
+
+Descripción general del taller.
+
+o
+
+Descripción del Problema (con capturas del código).
+
+o
+
+Capturas de Pantallas de los Problemas con sus soluciones.
+
+o
+
+Diseño visual limpio y coherente.
+
+o
+
+Imágenes claras y visibles.
+
+o
+
+Capturas de códigos claros y visibles.
+
+o
+
+Conclusiones o reflexiones del equipo.
+
+3. Demostración en vivo (Explicar su código fuente con claridad).
+Ejecución al azar de 4 problemas.
+4. Utilización oportuna de las estructuras de control repetitivas. Utilice switch.
+https://codersfree.com/posts/operadores-ternarios-en-php
+6. Se tomará en cuenta que el código tenga un footer con la fecha del día que se
+ejecute, esto debe ser incluido como un archivo externo.
+7. Se tomará en cuenta que utilice funciones de validación de datos (preg_match,
+filter_var, htmlspecialchar).
+https://www.php.net/manual/es/function.preg-match.php
+https://www.php.net/manual/es/function.htmlspecialchars.php
+https://www.php.net/manual/es/function.filter-var.php
+
+Elaborado por: Ing. Irina Fong
+13
+
+Página 5 de
+
+8. Utilizar formularios.
+9. Utilizar clases de utilidades con métodos estáticos.
+
+9. Realizar un menú que permita seleccionar el problema.
+10. Utilizar un enlace para volver al menú principal. Que ese enlace esté en una
+función, pasar el parámetro URL. (Navegación)
+
+Elaborado por: Ing. Irina Fong
+13
+
+Página 6 de
+
+📄 Enunciado de los problemas
+Calcular la media, desviación
+estándar, el número min y el
+máx de los 5 primeros
+números positivos introducidos
+a partir de un formulario.
+
+•
+
+Imprimir los N –
+primeros múltiplos de 4,
+dónde N es un valor
+introducido por teclado.
+(4*1=4;
+4*2=;4*3=)…Desborda
+miento?
+
+Pedir la cantidad de notas que
+desea ingresar el usuario.
+Luego pedir esas notas y
+calcular el promedio, la
+desviación estándar, la nota,
+mínima y la máxima. Usar
+foreach (o un ciclo que recorra
+una colección).
+
+.
+
+Problema #2
+
+Leer la edad de 5 personas y
+clasificar cada una en una
+categoría: niño (0-12),
+adolescente (13-17), adulto
+(18-64), adulto mayor (65+).
+
+En un hospital existen tres
+áreas: Ginecología, Pediatría y
+Traumatología. El presupuesto
+anual del hospital se reparte
+conforme a la siguiente tabla
+
+Generar Estadísticas si se
+repiten las edades. Integrar
+gráficas.
+
+Problema #4
+Calculadora de Datos
+Estadísticos
+
+500500 problema #2
+
+Problema #3
+Problema #1
+
+Se desea calcular
+independientemente la suma
+de los número pares e
+impares comprendidos entre 1
+y 200.
+
+Calcular la suma de los
+números del 1 al 1,000.
+
+Ver Referencia página #7
+Integrar Gráficas.
+
+Problema #5
+
+Problema #6
+
+Estación del Año
+
+Solicitar un número (1 al 9)
+
+Al ingresar la fecha, devolver
+la estación de año de acuerdo
+con la siguiente tabla (ver
+imagen de la estación del Año)
+
+Generar o imprimir las
+15 primeras potencias
+del número ( 4 elevado
+a la 1, 4 elevado a la
+dos, ….
+
+Ver Referencia página #7
+Datos prueba.
+Problema #8
+
+Problema #9
+Problema #9
+
+Problema #7
+
+Elaborado por: Ing. Irina Fong
+13
+
+Página 7 de
+
+Utilice un arreglo bidimensional para resolver el siguiente problema.
+Una empresa tiene cuatro vendedores (1 al 4) que venden cinco productos diferentes (1 al 5).
+Una vez al día, cada empleado pasa en una nota para cada tipo diferente de producto
+vendido. Cada hoja contiene lo siguiente:
+
+a) El número del vendedor
+b) El número de producto
+c) El valor total en dólares de ese producto vendido ese día
+Así, cada vendedor pasa entre 0 y 5 notas de ventas por día. Suponga que está disponible la
+información sobre todas las notas del mes pasado. Escriba un programa que lea toda esa
+información para las ventas del último mes (los datos de un vendedor a la vez (Nombre,
+Apellido, Número de Vendedor) y que resuma las ventas totales por vendedor, por producto.
+Todos los totales deben guardarse en el arreglo bidimensional ventas. Después de procesar
+toda la información del mes pasado, muestre los resultados en formato tabular, en donde cada
+columna representa a un vendedor específico y cada fila representa un producto. Saque el
+total de cada fila para obtener las ventas totales de cada producto durante el último mes. Saque
+el total de cada columna para obtener las ventas totales por cada vendedor durante el último
+mes. Su impresión tabular debe incluir estos totales cruzadas a la derecha de las filas
+totalizadas y en la parte inferior de las columnas totalizadas.
+Problema #10
+
+Elaborado por: Ing. Irina Fong
+13
+
+Página 8 de
+
+Área
+
+Porcentaje del presupuesto
+
+Ginecología
+
+40%
+
+Traumatología
+
+35%
+
+Pediatría
+
+25%
+
+En un hospital existen tres áreas: Ginecología, Pediatría y Traumatología. El
+presupuesto anual del hospital se reparte conforme a la siguiente tabla.
+
+Elaborado por: Ing. Irina Fong
+13
+
+Página 9 de
+
+Elaborado por: Ing. Irina Fong
+13
+
+Página 10 de
+
+Salidas Esperadas:
+
+Elaborado por: Ing. Irina Fong
+13
+
+Página 11 de
+
+Elaborado por: Ing. Irina Fong
+13
+
+Página 12 de
+
+Apéndice A. Secuencias de comandos entre sitios (XSS)
+Las vulnerabilidades de scripts entre sitios (XSS) se producen cuando un atacante puede
+inyectar scripts maliciosos en una aplicación web. Esto puede ocurrir cuando la entrada del
+usuario no se depura ni valida adecuadamente. Los ataques XSS pueden provocar el robo
+de datos, el robo de cookies o incluso la vulneración total del sistema.
+Para evitar ataques XSS en aplicaciones PHP, debes:
+•
+
+Utilice la función htmlspecialchars() de PHP para codificar la entrada del usuario y
+evitar la ejecución de scripts.
+
+A continuación, se muestra un ejemplo de cómo utilizar la función htmlspecialchars() de
+PHP para evitar ataques XSS:
+echo 'Hola ' . htmlspecialchars ( $_GET [ "nombre" ]) . '!' ;
+Referencia: https://medium.com/@khalidzeiter/php-owasp-top-10-essential-steps-forkeeping-your-web-application-safe-and-secure-72b5e7e55523
+
+Apéndice B. Top 10 Web Application Security Risks
+https://owasp.org/www-project-top-ten/
+
+Elaborado por: Ing. Irina Fong
+13
+
+Página 13 de
+
+
