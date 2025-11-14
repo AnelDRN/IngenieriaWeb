@@ -1,0 +1,20 @@
+# .htaccess para api-rest-productos
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Redirige todas las peticiones que no son un archivo o directorio real
+    # al endpoint principal de la API.
+    # Por ejemplo: /api-rest-productos/productos -> /api-rest-productos/api/productos.php
+    
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    
+    # La regla asume que el proyecto está en una subcarpeta llamada "api-rest-productos".
+    # Si el proyecto está en la raíz del servidor, la ruta sería /api/productos.php
+    RewriteRule ^productos/?(.*)$ api/productos.php?id=$1 [L,QSA]
+
+</IfModule>
+
+# Opcional: Prevenir el listado de directorios
+Options -Indexes

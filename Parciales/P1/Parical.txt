@@ -1,0 +1,29 @@
+UNIVERSIDAD TECNOLÓGICA DE PANAMÁ			
+FACULTAD DE INGENIERÍA DE SISTEMAS			
+DEPARTAMENTO DE INGENIERÍA DE SOFTWARE			
+CARRERA INGENIERÍA DE SOFTWARE			
+
+	II Parte (Programar en PHP)	Puntos 	Puntos Obtenidos
+I. El formulario web debe tener los siguientes campos:			
+1	Nombre	2	
+2	Apellido	2	
+3	Edad	2	
+4	Sexo	2	
+5	País de Residencia	2	
+6	Nacionalidad	2	
+7	Tema Tecnólogico que le gustaría aprender Correo Celular  (checkbox)	2	
+8	Observaciones o Consulta sobre el evento	2	
+9	La fecha del formulario El formulario debe tener un footer con el año actual e información de contacto (© 2025 iTECH. All rights reserved. 	5	
+10	El formulario debe tener CSS. No debe estar en blanco y negro.	10	
+	Total de Puntos	31	
+	II Parte / Base de Datos		
+11	Crear la base de datos  en  http://127.1.1.1/phpmyadmin/. 	5	
+12	Crear una clase para la  Conexión, con funciones de base de datos.	5	
+13	Crear las tablas necesarias (Datos del Inscriptor, Datos de País, Datos de áreas de interés).	15	
+14	Crear un reporte con los datos que se guardarón.	5	
+	Total de Puntos	30	
+	IV Pate / Validaciones		
+15	Validación de los datos del lado de PHP. 	5	
+16	Al guardarse los nombres y apellidos deben empezar en mayúscula.	4	
+	Total de Puntos	9	
+		70	
