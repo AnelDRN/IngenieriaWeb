@@ -3,7 +3,7 @@ class Database {
     private $host = '127.0.0.1';
     private $db_name = 'parcial_v1_db';
     private $username = 'root';
-    private $password = ''; // Asume una contraseña vacía para XAMPP/WAMPP por defecto
+    private $password = 'BDCore'; // Asume una contraseña vacía para XAMPP/WAMPP por defecto
     private $conn;
 
     public function connect() {

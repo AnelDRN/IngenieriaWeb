@@ -7,75 +7,65 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 require_once '../Modelo/conexion.php';
 require_once '../Modelo/Productos.php';
 
-// Obtener el método HTTP
 $method = $_SERVER['REQUEST_METHOD'];
 
 // Centralizar con SWITCH según método HTTP
-switch($method) {
+switch ($method) {
     case 'POST':
         registrarProducto();
         break;
-        
     case 'GET':
         obtenerProductos();
         break;
-        
     case 'PUT':
         actualizarProducto();
         break;
-        
     case 'DELETE':
-        // Opcional, pero es buena práctica tenerlo
         eliminarProducto();
         break;
-        
     default:
         http_response_code(405); // Método no permitido
-        echo json_encode([
-            'success' => false,
-            'message' => 'Método no permitido'
-        ]);
+        echo json_encode(['success' => false, 'message' => 'Método no permitido']);
 }
 
-// FUNCIÓN POST - Registrar producto (EJEMPLO GUIADO)
+// POST - Registrar un nuevo producto
 function registrarProducto() {
     $data = json_decode(file_get_contents("php://input"), true);
-    
-    if(!isset($data['codigo']) || !isset($data['producto']) || 
-       !isset($data['precio']) || !isset($data['cantidad'])) {
+
+    if (!isset($data['codigo']) || !isset($data['producto']) || !isset($data['precio']) || !isset($data['cantidad'])) {
         http_response_code(400); // Bad Request
-        echo json_encode(['success' => false, 'message' => 'Datos incompletos']);
+        echo json_encode(['success' => false, 'message' => 'Datos incompletos. Se requiere: codigo, producto, precio y cantidad.']);
         return;
     }
-    
+
     try {
         $producto = new Producto();
         $producto->codigo = $data['codigo'];
         $producto->producto = $data['producto'];
         $producto->precio = $data['precio'];
         $producto->cantidad = $data['cantidad'];
-        
-        if($producto->guardar()) {
+
+        if ($producto->guardar()) {
             http_response_code(201); // Creado
             echo json_encode(['success' => true, 'message' => 'Producto registrado exitosamente']);
         } else {
             http_response_code(500); // Internal Server Error
-            echo json_encode(['success' => false, 'message' => 'Error al registrar producto']);
+            echo json_encode(['success' => false, 'message' => 'Error al registrar el producto']);
         }
-    } catch(Exception $e) {
+    } catch (Exception $e) {
         http_response_code(500);
-        echo json_encode(['success' => false, 'message' => 'Error: ' . $e->getMessage()]);
+        echo json_encode(['success' => false, 'message' => 'Error en el servidor: ' . $e->getMessage()]);
     }
 }
 
-// FUNCIÓN GET - Listar productos (IMPLEMENTADO)
+// GET - Obtener uno o todos los productos
 function obtenerProductos() {
     try {
-        if(isset($_GET['id'])) {
+        if (isset($_GET['id'])) {
             $id = intval($_GET['id']);
             $producto = Producto::buscarPorId($id);
-            
-            if($producto) {
+
+            if ($producto) {
                 http_response_code(200); // OK
                 echo json_encode(['success' => true, 'data' => $producto]);
             } else {
@@ -87,85 +77,80 @@ function obtenerProductos() {
             http_response_code(200); // OK
             echo json_encode(['success' => true, 'data' => $productos]);
         }
-    } catch(Exception $e) {
+    } catch (Exception $e) {
         http_response_code(500);
-        echo json_encode(['success' => false, 'message' => 'Error: ' . $e->getMessage()]);
+        echo json_encode(['success' => false, 'message' => 'Error en el servidor: ' . $e->getMessage()]);
     }
 }
 
-// FUNCIÓN PUT - Actualizar producto (IMPLEMENTADO)
+// PUT - Actualizar un producto existente
 function actualizarProducto() {
+    // Para PUT, el ID vendrá en la URL
+    if (!isset($_GET['id'])) {
+        http_response_code(400);
+        echo json_encode(['success' => false, 'message' => 'El ID del producto es requerido en la URL.']);
+        return;
+    }
+    
+    $id = intval($_GET['id']);
     $data = json_decode(file_get_contents("php://input"), true);
-    
-    // El ID para PUT puede venir en la URL o en el cuerpo. La guía sugiere en el cuerpo.
-    $id = isset($_GET['id']) ? intval($_GET['id']) : (isset($data['id']) ? intval($data['id']) : null);
 
-    if($id === null) {
-        http_response_code(400); // Bad Request
-        echo json_encode(['success' => false, 'message' => 'ID del producto es requerido']);
-        return;
-    }
-
-    // Validar que el producto exista antes de actualizar
-    if (!Producto::buscarPorId($id)) {
-        http_response_code(404); // No encontrado
-        echo json_encode(['success' => false, 'message' => 'Producto no encontrado']);
-        return;
-    }
-    
-    // Validar datos completos para la actualización
-    if(!isset($data['codigo']) || !isset($data['producto']) || 
-       !isset($data['precio']) || !isset($data['cantidad'])) {
-        http_response_code(400); // Bad Request
-        echo json_encode(['success' => false, 'message' => 'Datos incompletos para la actualización']);
+    // Validar datos de entrada
+    if (!isset($data['codigo']) || !isset($data['producto']) || !isset($data['precio']) || !isset($data['cantidad'])) {
+        http_response_code(400);
+        echo json_encode(['success' => false, 'message' => 'Datos incompletos para la actualización.']);
         return;
     }
 
     try {
+        // Verificar si el producto existe antes de actualizar
+        if (!Producto::buscarPorId($id)) {
+            http_response_code(404);
+            echo json_encode(['success' => false, 'message' => 'Producto no encontrado.']);
+            return;
+        }
+
         $producto = new Producto();
         $producto->id = $id;
         $producto->codigo = $data['codigo'];
         $producto->producto = $data['producto'];
         $producto->precio = $data['precio'];
         $producto->cantidad = $data['cantidad'];
-        
-        if($producto->editar()) {
+
+        if ($producto->editar()) {
             http_response_code(200); // OK
             echo json_encode(['success' => true, 'message' => 'Producto actualizado exitosamente']);
         } else {
-            // Esto podría pasar si los datos son idénticos y la BD no reporta filas afectadas
-            http_response_code(200); // O 304 Not Modified, pero 200 es más simple
-            echo json_encode(['success' => true, 'message' => 'No se realizaron cambios en el producto']);
+            http_response_code(500);
+            echo json_encode(['success' => false, 'message' => 'Error al actualizar el producto.']);
         }
-        
-    } catch(Exception $e) {
+    } catch (Exception $e) {
         http_response_code(500);
-        echo json_encode(['success' => false, 'message' => 'Error: ' . $e->getMessage()]);
+        echo json_encode(['success' => false, 'message' => 'Error en el servidor: ' . $e->getMessage()]);
     }
 }
 
-// FUNCIÓN DELETE - Eliminar producto (OPCIONAL IMPLEMENTADO)
+// DELETE - Eliminar un producto (opcional)
 function eliminarProducto() {
-    // El ID para DELETE usualmente viene en la URL
-    if(!isset($_GET['id'])) {
-        http_response_code(400); // Bad Request
-        echo json_encode(['success' => false, 'message' => 'ID del producto es requerido']);
+    if (!isset($_GET['id'])) {
+        http_response_code(400);
+        echo json_encode(['success' => false, 'message' => 'El ID del producto es requerido en la URL.']);
         return;
     }
 
     $id = intval($_GET['id']);
 
     try {
-        if(Producto::eliminar($id)) {
+        if (Producto::eliminar($id)) {
             http_response_code(200); // OK
             echo json_encode(['success' => true, 'message' => 'Producto eliminado exitosamente']);
         } else {
             http_response_code(404); // No encontrado
-            echo json_encode(['success' => false, 'message' => 'Producto no encontrado o ya fue eliminado']);
+            echo json_encode(['success' => false, 'message' => 'Producto no encontrado o ya fue eliminado.']);
         }
-    } catch(Exception $e) {
+    } catch (Exception $e) {
         http_response_code(500);
-        echo json_encode(['success' => false, 'message' => 'Error: ' . $e->getMessage()]);
+        echo json_encode(['success' => false, 'message' => 'Error en el servidor: ' . $e->getMessage()]);
     }
 }
 ?>

@@ -7,37 +7,43 @@ class Producto {
     public $producto;
     public $precio;
     public $cantidad;
-    
-    // Método POST - Guardar (ya implementado en la guía)
+
+    // Método POST - Guardar
     public function guardar() {
         $db = DB::getInstance();
         $sql = "INSERT INTO productos (codigo, producto, precio, cantidad) 
                 VALUES (?, ?, ?, ?)";
         $params = [$this->codigo, $this->producto, $this->precio, $this->cantidad];
-        // Usamos el método insertSeguro que retorna el ID, pero la guía espera un booleano.
-        // Si lastInsertId() > 0, la inserción fue exitosa.
-        return $db->insertSeguro($sql, $params) > 0;
+        return $db->insertSeguro($sql, $params);
     }
-    
-    // Método GET - Listar todos (IMPLEMENTADO)
+
+    /**
+     * Método GET - Listar todos los productos
+     * @return array Array de productos
+     */
     public static function listarTodos() {
         $db = DB::getInstance();
         $sql = "SELECT * FROM productos ORDER BY id DESC";
-        // El método query ya retorna un array de resultados.
-        return $db->query($sql);
+        // Devuelve un array de objetos asociativos
+        return $db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     }
-    
-    // Método GET - Buscar por ID (IMPLEMENTADO)
+
+    /**
+     * Método GET - Buscar un producto por su ID
+     * @param int $id ID del producto
+     * @return array|false Un array asociativo con los datos del producto o false si no se encuentra
+     */
     public static function buscarPorId($id) {
         $db = DB::getInstance();
         $sql = "SELECT * FROM productos WHERE id = ?";
-        $resultado = $db->query($sql, [$id]);
-        // query() devuelve un array de filas. Como buscamos por ID, solo debe haber una.
-        // Devolvemos la primera fila, o `false` si no hay resultados.
-        return $resultado ? $resultado[0] : false;
+        // Devuelve un único resultado como array asociativo
+        return $db->query($sql, [$id])->fetch(PDO::FETCH_ASSOC);
     }
-    
-    // Método PUT - Actualizar (IMPLEMENTADO)
+
+    /**
+     * Método PUT - Actualizar un producto existente
+     * @return bool True si la actualización fue exitosa, false en caso contrario
+     */
     public function editar() {
         $db = DB::getInstance();
         $sql = "UPDATE productos 
@@ -45,17 +51,18 @@ class Producto {
                 WHERE id = ?";
         $params = [$this->codigo, $this->producto, $this->precio, 
                    $this->cantidad, $this->id];
-        // updateSeguro retorna el número de filas afectadas.
-        // Si es > 0, la actualización fue exitosa.
-        return $db->updateSeguro($sql, $params) > 0;
+        return $db->updateSeguro($sql, $params);
     }
-    
-    // Método DELETE - Eliminar (OPCIONAL)
+
+    /**
+     * Método DELETE - Eliminar un producto por su ID (Opcional)
+     * @param int $id ID del producto a eliminar
+     * @return bool True si la eliminación fue exitosa, false en caso contrario
+     */
     public static function eliminar($id) {
         $db = DB::getInstance();
         $sql = "DELETE FROM productos WHERE id = ?";
-        // query() para DELETE retorna el número de filas afectadas.
-        return $db->query($sql, [$id]) > 0;
+        return $db->query($sql, [$id]);
     }
 }
 ?>
